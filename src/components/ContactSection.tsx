@@ -1,0 +1,211 @@
+import { useState } from "react";
+import { Phone, Mail, MapPin, Send, User, MessageSquare, Building } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+
+const ContactSection = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    toast({
+      title: "Message Sent!",
+      description: "Thank you for contacting us. We will get back to you shortly.",
+    });
+
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      company: "",
+      message: ""
+    });
+    setIsSubmitting(false);
+  };
+
+  const contactInfo = [
+    {
+      icon: Phone,
+      title: "Phone",
+      details: [
+        { label: "Pravin Thorat", value: "+91 9890728198" },
+        { label: "Vishal Shewale", value: "+91 7350466011" }
+      ]
+    },
+    {
+      icon: Mail,
+      title: "Email",
+      details: [
+        { label: "General Inquiries", value: "samseva83@gmail.com" }
+      ]
+    },
+    {
+      icon: MapPin,
+      title: "Address",
+      details: [
+        { label: "", value: "198 Near Post Office Banawadi, Tal-Karad, Dist-Satara, 415124, Maharashtra" }
+      ]
+    }
+  ];
+
+  return (
+    <section id="contact" className="py-20 bg-navy">
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <p className="text-gold font-medium uppercase tracking-wider mb-2">Get In Touch</p>
+          <h2 className="font-heading text-4xl md:text-5xl font-bold text-card mb-4">
+            Contact Us
+          </h2>
+          <p className="text-steel-light max-w-2xl mx-auto">
+            Ready to secure what matters most? Contact us for a free consultation and customized security solutions.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Contact Form */}
+          <div className="bg-card rounded-lg p-8 shadow-elegant">
+            <h3 className="font-heading text-2xl font-bold text-foreground mb-6">Send us a Message</h3>
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div className="relative">
+                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                  <Input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name *"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="pl-10 bg-muted border-border focus:border-gold"
+                  />
+                </div>
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                  <Input
+                    type="email"
+                    name="email"
+                    placeholder="Your Email *"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="pl-10 bg-muted border-border focus:border-gold"
+                  />
+                </div>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div className="relative">
+                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                  <Input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone Number *"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    className="pl-10 bg-muted border-border focus:border-gold"
+                  />
+                </div>
+                <div className="relative">
+                  <Building className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                  <Input
+                    type="text"
+                    name="company"
+                    placeholder="Company Name"
+                    value={formData.company}
+                    onChange={handleChange}
+                    className="pl-10 bg-muted border-border focus:border-gold"
+                  />
+                </div>
+              </div>
+
+              <div className="relative">
+                <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" />
+                <Textarea
+                  name="message"
+                  placeholder="Your Message *"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={5}
+                  className="pl-10 bg-muted border-border focus:border-gold resize-none"
+                />
+              </div>
+
+              <Button 
+                type="submit" 
+                size="lg" 
+                variant="secondary"
+                className="w-full font-heading uppercase tracking-wider"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  "Sending..."
+                ) : (
+                  <>
+                    Send Message
+                    <Send className="ml-2 w-5 h-5" />
+                  </>
+                )}
+              </Button>
+            </form>
+          </div>
+
+          {/* Contact Info */}
+          <div className="space-y-8">
+            {contactInfo.map((info, index) => (
+              <div key={index} className="flex gap-4">
+                <div className="w-14 h-14 rounded-lg bg-gradient-gold flex items-center justify-center flex-shrink-0">
+                  <info.icon className="w-7 h-7 text-navy" />
+                </div>
+                <div>
+                  <h4 className="font-heading text-xl font-semibold text-gold mb-2">{info.title}</h4>
+                  {info.details.map((detail, idx) => (
+                    <div key={idx} className="mb-1">
+                      {detail.label && <span className="text-steel-light text-sm">{detail.label}: </span>}
+                      <span className="text-card">{detail.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            {/* Map placeholder */}
+            <div className="bg-navy-light rounded-lg overflow-hidden mt-8 h-[250px] flex items-center justify-center border border-gold/20">
+              <div className="text-center p-6">
+                <MapPin className="w-12 h-12 text-gold mx-auto mb-4" />
+                <p className="text-steel-light">
+                  Banawadi, Karad, Satara<br />
+                  Maharashtra - 415124
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ContactSection;
