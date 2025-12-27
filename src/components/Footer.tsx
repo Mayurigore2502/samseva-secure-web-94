@@ -1,5 +1,4 @@
 import { Phone, Mail, MapPin } from "lucide-react";
-import samsevaLogo from "@/assets/samseva-logo.jpg";
 
 const Footer = () => {
   return (
@@ -9,11 +8,13 @@ const Footer = () => {
           {/* Logo & About */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <img 
-                src={samsevaLogo} 
-                alt="Samseva Security Force Logo" 
-                className="h-16 w-auto object-contain"
-              />
+              <div className="w-12 h-12 rounded-full bg-gradient-gold flex items-center justify-center">
+                <span className="font-heading font-bold text-navy text-lg">SS</span>
+              </div>
+              <div>
+                <h3 className="font-heading text-xl font-bold text-gold">SAMSEVA</h3>
+                <p className="text-xs text-steel-light uppercase tracking-wider">Security Force Pvt. Ltd.</p>
+              </div>
             </div>
             <p className="text-steel-light text-sm leading-relaxed">
               Professional security services throughout Maharashtra. We secure what matters most - 24/7, 365 days a year.
