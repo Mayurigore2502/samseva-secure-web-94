@@ -1,5 +1,5 @@
 import { CheckCircle2 } from "lucide-react";
-import aboutImage from "@/assets/about-security.jpg";
+import aboutImage from "@/assets/about-image.jpg";
 
 const AboutSection = () => {
   const highlights = [
@@ -20,7 +20,7 @@ const AboutSection = () => {
             <div className="relative rounded-lg overflow-hidden shadow-elegant">
               <img 
                 src={aboutImage} 
-                alt="Security control room" 
+                alt="Samseva Security Team" 
                 className="w-full h-[400px] object-cover"
               />
               <div className="absolute inset-0 bg-navy/20" />

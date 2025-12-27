@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Menu, X, Phone, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+import samsevaLogo from "@/assets/samseva-logo.jpg";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,35 +16,16 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-navy/95 backdrop-blur-md border-b border-gold/20">
-      {/* Top Bar */}
-      <div className="bg-navy-dark py-2 hidden md:block">
-        <div className="container mx-auto px-4 flex justify-between items-center text-sm">
-          <div className="flex items-center gap-6">
-            <a href="tel:9890728198" className="flex items-center gap-2 text-gold hover:text-gold-light transition-colors">
-              <Phone className="w-4 h-4" />
-              <span>+91 9890728198</span>
-            </a>
-            <a href="mailto:samseva83@gmail.com" className="flex items-center gap-2 text-gold hover:text-gold-light transition-colors">
-              <Mail className="w-4 h-4" />
-              <span>samseva83@gmail.com</span>
-            </a>
-          </div>
-          <p className="text-steel-light">24/7 Security Services Across Maharashtra</p>
-        </div>
-      </div>
-
       {/* Main Nav */}
-      <nav className="container mx-auto px-4 py-4">
+      <nav className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-gradient-gold flex items-center justify-center">
-              <span className="font-heading font-bold text-navy text-lg">SS</span>
-            </div>
-            <div>
-              <h1 className="font-heading text-xl font-bold text-gold leading-tight">SAMSEVA</h1>
-              <p className="text-xs text-steel-light uppercase tracking-wider">Security Force</p>
-            </div>
+            <img 
+              src={samsevaLogo} 
+              alt="Samseva Security Force Logo" 
+              className="h-14 w-auto object-contain"
+            />
           </a>
 
           {/* Desktop Navigation */}
@@ -58,13 +39,6 @@ const Header = () => {
                 {link.name}
               </a>
             ))}
-          </div>
-
-          {/* CTA Button */}
-          <div className="hidden lg:block">
-            <Button variant="secondary" size="lg" className="font-heading uppercase tracking-wider">
-              Get a Quote
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -91,9 +65,6 @@ const Header = () => {
                   {link.name}
                 </a>
               ))}
-              <Button variant="secondary" className="mt-4 font-heading uppercase tracking-wider">
-                Get a Quote
-              </Button>
             </div>
           </div>
         )}
