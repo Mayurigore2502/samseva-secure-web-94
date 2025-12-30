@@ -191,15 +191,18 @@ const ContactSection = () => {
               </div>
             ))}
 
-            {/* Map placeholder */}
-            <div className="bg-navy-light rounded-lg overflow-hidden mt-8 h-[250px] flex items-center justify-center border border-gold/20">
-              <div className="text-center p-6">
-                <MapPin className="w-12 h-12 text-gold mx-auto mb-4" />
-                <p className="text-steel-light">
-                  Banawadi, Karad, Satara<br />
-                  Maharashtra - 415124
-                </p>
-              </div>
+            {/* Google Maps Embed */}
+            <div className="rounded-lg overflow-hidden mt-8 h-[250px] border border-gold/20">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3821.8!2d74.1833!3d17.2833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc183a6a5555555%3A0x5555555555555555!2sBanawadi%2C%20Maharashtra%20415124!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Samseva Security Force Location - Banawadi, Karad"
+              />
             </div>
           </div>
         </div>
