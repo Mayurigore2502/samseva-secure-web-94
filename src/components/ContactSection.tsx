@@ -4,12 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import emailjs from "@emailjs/browser";
-
-// EmailJS Configuration - Replace with your IDs from emailjs.com
-const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
-const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+// Google Sheets Web App URL
+const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbyr9lBPc8Y-S3jxhv8lZqqOnRj0Lc6dNFC1TG4S_K7I2oFXKbKZaqrVayLHb5CTPrhE/exec";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -32,19 +28,18 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      // Send email via EmailJS
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          phone: formData.phone,
-          company: formData.company,
-          message: formData.message,
+      // Send data to Google Sheets
+      await fetch(GOOGLE_SHEETS_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
         },
-        EMAILJS_PUBLIC_KEY
-      );
+        body: JSON.stringify({
+          ...formData,
+          timestamp: new Date().toISOString(),
+        }),
+      });
 
       toast({
         title: "Message Sent!",
