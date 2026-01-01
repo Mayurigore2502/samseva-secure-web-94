@@ -14,42 +14,38 @@ const AboutSection = () => {
   return (
     <section id="about" className="py-20 bg-muted">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Image */}
-          <div className="relative animate-fade-in-left">
-            <div className="relative rounded-lg overflow-hidden shadow-elegant">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <p className="text-gold font-medium uppercase tracking-wider mb-2">About Us</p>
+          <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
+            Professional Security You Can Trust
+          </h2>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* About Image from Brochure */}
+          <div className="relative">
+            <div className="rounded-lg overflow-hidden shadow-elegant border border-gold/20">
               <img 
                 src={aboutImage} 
-                alt="Security control room" 
-                className="w-full h-[400px] object-cover"
+                alt="About Samseva Security Force - Our Management Team" 
+                className="w-full h-auto object-contain"
               />
-              <div className="absolute inset-0 bg-navy/20" />
-            </div>
-            {/* Floating badge */}
-            <div className="absolute -bottom-6 -right-6 bg-navy p-6 rounded-lg shadow-elegant hidden md:block">
-              <p className="font-heading text-4xl font-bold text-gold">3+</p>
-              <p className="text-steel-light text-sm uppercase tracking-wider">Years Experience</p>
             </div>
           </div>
 
           {/* Content */}
-          <div className="animate-fade-in-right">
-            <p className="text-gold font-medium uppercase tracking-wider mb-2">About Us</p>
-            <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Professional Security<br />
-              <span className="text-navy">You Can Trust</span>
-            </h2>
-            
+          <div>
             <p className="text-muted-foreground mb-6 leading-relaxed">
               Samseva Security Force is established in 2022, run by a group of servicemen and trained post graduates. We stand tall for our quality service among the top security providers in Maharashtra. We are dedicated to providing efficient and professional security services throughout India.
             </p>
 
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              We appreciate that each client has a distinctive risk profile and therefore have varied physical security requirements. Our team meets these requirements in a professional way, uniquely suited to the client's profile and specific business needs.
+              We appreciate that each client has a distinctive risk profile and therefore have varied physical security requirements. Our team meets these requirements in a professional way, uniquely suited to the client's profile and specific business needs. We work with our clients to understand their security needs and implement suitable frameworks to protect their people, assets, information and reputation.
             </p>
 
             {/* Highlights */}
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid sm:grid-cols-2 gap-4 mb-8">
               {highlights.map((item, index) => (
                 <div key={index} className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-gold flex-shrink-0" />
@@ -59,7 +55,7 @@ const AboutSection = () => {
             </div>
 
             {/* Management */}
-            <div className="mt-10 p-6 bg-card rounded-lg shadow-card border border-border">
+            <div className="p-6 bg-card rounded-lg shadow-card border border-border">
               <h3 className="font-heading text-lg font-semibold text-foreground mb-4 uppercase tracking-wider">
                 Our Management
               </h3>
