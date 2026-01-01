@@ -1,6 +1,6 @@
 import { Shield, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-security.jpg";
+import heroImage from "@/assets/hero-guard.jpg";
 
 const HeroSection = () => {
   return (
