@@ -1,14 +1,12 @@
-import clientsImage from "@/assets/clients-page.jpg";
-
 const ClientsSection = () => {
   const clients = [
     "Titan",
-    "Synfra - Synergy SKI Infradevelopment",
-    "Siddharth Patil Group",
+    "Synfra",
+    "Synergy SKI Infradevelopment",
     "The Satara Sahakari Bank Ltd.",
     "Patel Ahuja",
     "Peter England",
-    "Domino's Pizza",
+    "Donin's Royal",
     "Royal Enfield",
     "Brillent Academy College of Science",
     "Krishna Koyana Patsanstha",
@@ -35,31 +33,16 @@ const ClientsSection = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Clients Image from Brochure */}
-          <div className="relative">
-            <div className="rounded-lg overflow-hidden shadow-elegant border border-gold/20">
-              <img 
-                src={clientsImage} 
-                alt="Our Clients - Titan, Peter England, Royal Enfield, Domino's Pizza and more" 
-                className="w-full h-auto object-contain"
-              />
+        {/* Clients Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          {clients.map((client, index) => (
+            <div 
+              key={index}
+              className="bg-card p-6 rounded-lg border border-border hover:border-gold hover:shadow-gold transition-all text-center"
+            >
+              <p className="font-medium text-foreground text-sm">{client}</p>
             </div>
-          </div>
-
-          {/* Clients List */}
-          <div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {clients.map((client, index) => (
-                <div 
-                  key={index}
-                  className="bg-card p-4 rounded-lg border border-border hover:border-gold hover:shadow-gold transition-all text-center"
-                >
-                  <p className="font-medium text-foreground text-sm">{client}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
