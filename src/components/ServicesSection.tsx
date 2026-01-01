@@ -9,6 +9,9 @@ import {
   Factory,
   ShieldCheck
 } from "lucide-react";
+import servicesImage from "@/assets/services-page.jpg";
+import servicesImage2 from "@/assets/services-page-2.jpg";
+import segmentsImage from "@/assets/services-segments.jpg";
 
 const ServicesSection = () => {
   const services = [
@@ -54,8 +57,8 @@ const ServicesSection = () => {
     },
     {
       icon: ShieldCheck,
-      title: "Manned Guarding",
-      description: "Armed and unarmed security with equipment like metal detectors, CCTV, and intruder alarm systems for comprehensive security coverage."
+      title: "Labour Supply",
+      description: "We provide workforce for industries like Construction, MEP services, Contracting, Retail, FMCG, Hotels, Manufacturing, Hospitality, Security, Engineering, Restaurants & Catering."
     }
   ];
 
@@ -73,8 +76,19 @@ const ServicesSection = () => {
           </p>
         </div>
 
+        {/* Customer Segments Image */}
+        <div className="mb-16">
+          <div className="rounded-lg overflow-hidden shadow-elegant border border-gold/20 max-w-4xl mx-auto">
+            <img 
+              src={segmentsImage} 
+              alt="Customer Segments - Hospital, Jewelers, Hotel, Industrial, Bank, Pharma, Warehouse and more" 
+              className="w-full h-auto object-contain"
+            />
+          </div>
+        </div>
+
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {services.map((service, index) => (
             <div 
               key={index}
@@ -89,8 +103,26 @@ const ServicesSection = () => {
           ))}
         </div>
 
-        {/* Customer Segments */}
-        <div className="mt-20">
+        {/* Services Images Gallery */}
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="rounded-lg overflow-hidden shadow-elegant border border-gold/20">
+            <img 
+              src={servicesImage} 
+              alt="Commercial, Residential, Banking and Bouncer Security Services" 
+              className="w-full h-auto object-contain"
+            />
+          </div>
+          <div className="rounded-lg overflow-hidden shadow-elegant border border-gold/20">
+            <img 
+              src={servicesImage2} 
+              alt="Event Security, Labour Supply, Fire Safety and Housekeeping Services" 
+              className="w-full h-auto object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Customer Segments Tags */}
+        <div className="mt-16">
           <h3 className="font-heading text-2xl font-bold text-center text-gold mb-10 uppercase tracking-wider">
             Customer Segments We Serve
           </h3>
@@ -98,7 +130,7 @@ const ServicesSection = () => {
             {[
               "Hospital", "Jewelers", "Hotel", "Residential", 
               "Health-Care Institute", "Industrial", "Automobiles", 
-              "Warehouse", "Pharma", "Bank"
+              "Warehouse", "Pharma", "Bank", "Production House", "Institute", "Construction"
             ].map((segment, index) => (
               <span 
                 key={index}
