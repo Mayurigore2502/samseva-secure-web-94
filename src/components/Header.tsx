@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import logoIcon from "@/assets/logo-icon.png";
+import TransparentLogo from "@/components/TransparentLogo";
+import logoIconSrc from "@/assets/logo-icon.jpg";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,8 +22,8 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#home" className="flex items-center">
-            <img 
-              src={logoIcon} 
+            <TransparentLogo 
+              src={logoIconSrc} 
               alt="Samseva Security Force Logo" 
               className="h-14 w-auto object-contain"
             />
