@@ -1,5 +1,5 @@
 import { Phone, Mail, MapPin } from "lucide-react";
-import samsevaLogo from "@/assets/samseva-logo.jpg";
+import logoText from "@/assets/logo-text.jpg";
 
 const Footer = () => {
   return (
@@ -10,8 +10,8 @@ const Footer = () => {
           <div>
             <div className="mb-4">
               <img 
-                src={samsevaLogo} 
-                alt="Samseva Security Force Logo" 
+                src={logoText} 
+                alt="Samseva" 
                 className="h-16 w-auto object-contain"
               />
             </div>
