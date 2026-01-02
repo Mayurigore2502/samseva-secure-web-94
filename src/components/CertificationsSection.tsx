@@ -1,18 +1,29 @@
-import { Award, Shield, Building, FileCheck, Receipt, Landmark, Factory, Rocket, ScrollText, Phone, Mail } from "lucide-react";
+import { Shield, Phone, Mail } from "lucide-react";
+
+// Import certification logos
+import incorporationLogo from "@/assets/certifications/certificate-of-incorporation.jpg";
+import psaraLogo from "@/assets/certifications/psara.jpg";
+import epfoLogo from "@/assets/certifications/epfo.png";
+import esicLogo from "@/assets/certifications/esic.png";
+import ptecLogo from "@/assets/certifications/ptec-ptrc.png";
+import isoLogo from "@/assets/certifications/iso.png";
+import msmeLogo from "@/assets/certifications/msme.jfif";
+import gstApprovedLogo from "@/assets/certifications/gst-approved.jfif";
+import gstLogo from "@/assets/certifications/gst.png";
+import shopsLogo from "@/assets/certifications/shops-establishments.jfif";
 
 const CertificationsSection = () => {
   const certifications = [
-    { name: "Certificate of Incorporation", icon: ScrollText },
-    { name: "Private Security Agencies Act 2005", icon: Shield },
-    { name: "Employees' Provident Fund Organisation", icon: Landmark },
-    { name: "Employees' State Insurance Corporation", icon: Building },
-    { name: "PTEC & PTRC Registration", icon: Receipt },
-    { name: "ISO Certification", icon: Award },
-    { name: "Ministry of MSME", icon: Factory },
-    { name: "GST Approved", icon: Receipt },
-    { name: "Goods and Services Tax", icon: FileCheck },
-    { name: "Shops and Establishments Act", icon: Building },
-    { name: "Startup India", icon: Rocket },
+    { name: "Certificate of Incorporation", logo: incorporationLogo },
+    { name: "Private Security Agencies Act 2005", logo: psaraLogo },
+    { name: "Employees' Provident Fund Organisation", logo: epfoLogo },
+    { name: "Employees' State Insurance Corporation", logo: esicLogo },
+    { name: "PTEC & PTRC Registration", logo: ptecLogo },
+    { name: "ISO Certification", logo: isoLogo },
+    { name: "Ministry of MSME", logo: msmeLogo },
+    { name: "GST Approved", logo: gstApprovedLogo },
+    { name: "Goods and Services Tax", logo: gstLogo },
+    { name: "Shops and Establishments Act", logo: shopsLogo },
   ];
 
   return (
@@ -30,14 +41,18 @@ const CertificationsSection = () => {
         </div>
 
         {/* Certifications Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {certifications.map((cert, index) => (
             <div 
               key={index}
               className="bg-card p-4 rounded-lg border border-border hover:border-gold/40 transition-colors text-center group"
             >
-              <div className="w-12 h-12 rounded-full bg-navy/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-gold/10 transition-colors">
-                <cert.icon className="w-6 h-6 text-navy group-hover:text-gold transition-colors" />
+              <div className="w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                <img 
+                  src={cert.logo} 
+                  alt={cert.name}
+                  className="max-w-full max-h-full object-contain"
+                />
               </div>
               <p className="text-sm text-foreground font-medium">{cert.name}</p>
             </div>
