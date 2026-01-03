@@ -4,10 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-// Google Sheets Web App URL - Replace with your own Google Apps Script URL
-// To set up: Create Google Sheet → Extensions → Apps Script → Deploy as Web App
+// Client's Google Sheets Web App URL
 const GOOGLE_SHEETS_URL =
-  "https://script.google.com/macros/s/AKfycbwc74ib3DNMAZ5exm_YiYNjpqOnEReIsej_0EYSjhicFQnmx8oirb3vN4K74vPnE0TU/exec";
+  "https://script.google.com/macros/s/AKfycbyZJJDvWaFf_pB11dbphpMGSFOmNmGZOwrp4UVwS4dLJzacgQ3XNbmtTjNZieIugSvb/exec";
 
 const ContactSection = () => {
   const { toast } = useToast();
