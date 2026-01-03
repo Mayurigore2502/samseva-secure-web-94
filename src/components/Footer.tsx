@@ -1,5 +1,4 @@
 import { Phone, Mail, MapPin } from "lucide-react";
-import TransparentLogo from "@/components/TransparentLogo";
 import logoTextSrc from "@/assets/logo-text.jpg";
 
 const Footer = () => {
@@ -10,7 +9,7 @@ const Footer = () => {
           {/* Logo & About */}
           <div>
             <div className="mb-4">
-              <TransparentLogo 
+              <img 
                 src={logoTextSrc} 
                 alt="Samseva" 
                 className="h-16 w-auto object-contain"
