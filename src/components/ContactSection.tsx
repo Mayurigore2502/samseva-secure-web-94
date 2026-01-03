@@ -6,7 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 // Google Sheets Web App URL - Replace with your own Google Apps Script URL
 // To set up: Create Google Sheet → Extensions → Apps Script → Deploy as Web App
-const GOOGLE_SHEETS_URL = "PASTE_CLIENT_GOOGLE_SHEETS_URL_HERE";
+const GOOGLE_SHEETS_URL =
+  "https://script.google.com/macros/s/AKfycbwc74ib3DNMAZ5exm_YiYNjpqOnEReIsej_0EYSjhicFQnmx8oirb3vN4K74vPnE0TU/exec";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -15,13 +16,13 @@ const ContactSection = () => {
     email: "",
     phone: "",
     company: "",
-    message: ""
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -52,7 +53,7 @@ const ContactSection = () => {
         email: "",
         phone: "",
         company: "",
-        message: ""
+        message: "",
       });
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -72,23 +73,19 @@ const ContactSection = () => {
       title: "Phone",
       details: [
         { label: "Pravin Thorat", value: "+91 9890728198" },
-        { label: "Vishal Shewale", value: "+91 7350466011" }
-      ]
+        { label: "Vishal Shewale", value: "+91 7350466011" },
+      ],
     },
     {
       icon: Mail,
       title: "Email",
-      details: [
-        { label: "General Inquiries", value: "samseva83@gmail.com" }
-      ]
+      details: [{ label: "General Inquiries", value: "samseva83@gmail.com" }],
     },
     {
       icon: MapPin,
       title: "Address",
-      details: [
-        { label: "", value: "198 Near Post Office Banawadi, Tal-Karad, Dist-Satara, 415124, Maharashtra" }
-      ]
-    }
+      details: [{ label: "", value: "198 Near Post Office Banawadi, Tal-Karad, Dist-Satara, 415124, Maharashtra" }],
+    },
   ];
 
   return (
@@ -97,9 +94,7 @@ const ContactSection = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <p className="text-gold font-medium uppercase tracking-wider mb-2">Get In Touch</p>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-card mb-4">
-            Contact Us
-          </h2>
+          <h2 className="font-heading text-4xl md:text-5xl font-bold text-card mb-4">Contact Us</h2>
           <p className="text-steel-light max-w-2xl mx-auto">
             Ready to secure what matters most? Contact us for a free consultation and customized security solutions.
           </p>
@@ -176,9 +171,9 @@ const ContactSection = () => {
                 />
               </div>
 
-              <Button 
-                type="submit" 
-                size="lg" 
+              <Button
+                type="submit"
+                size="lg"
                 variant="secondary"
                 className="w-full font-heading uppercase tracking-wider"
                 disabled={isSubmitting}
