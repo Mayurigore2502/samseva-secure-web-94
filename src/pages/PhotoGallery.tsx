@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Camera, X } from "lucide-react";
+import { Camera, X, ChevronLeft, ChevronRight } from "lucide-react";
 
 import gallery1 from "@/assets/gallery/gallery-1.png";
 import gallery2 from "@/assets/gallery/gallery-2.png";
@@ -20,50 +20,54 @@ const photos = [
 const PhotoGallery = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
+  const goNext = () => {
+    if (selectedIndex !== null) setSelectedIndex((selectedIndex + 1) % photos.length);
+  };
+  const goPrev = () => {
+    if (selectedIndex !== null) setSelectedIndex((selectedIndex - 1 + photos.length) % photos.length);
+  };
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-navy">
       <Header />
       <main className="pt-24">
         {/* Hero Banner */}
-        <section className="bg-navy py-16">
+        <section className="py-14 border-b border-gold/20">
           <div className="container mx-auto px-4 text-center">
-            <Camera className="w-12 h-12 text-gold mx-auto mb-4" />
-            <h1 className="font-heading text-4xl md:text-5xl font-bold text-gold mb-4">
+            <Camera className="w-10 h-10 text-gold mx-auto mb-3" />
+            <h1 className="font-heading text-4xl md:text-5xl font-bold text-gold mb-3">
               Photo Gallery
             </h1>
-            <p className="text-steel-light text-lg max-w-2xl mx-auto">
-              A glimpse into our operations, team, and the professional security services we provide.
+            <p className="text-steel-light text-base max-w-xl mx-auto">
+              Our guards on duty across various client locations.
             </p>
           </div>
         </section>
 
-        {/* Gallery Grid */}
-        <section className="bg-background py-16">
+        {/* Gallery — full images, no cropping */}
+        <section className="py-12">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5">
               {photos.map((photo, index) => (
                 <div
                   key={index}
                   onClick={() => setSelectedIndex(index)}
-                  className="group relative overflow-hidden rounded-xl shadow-md hover:shadow-2xl cursor-pointer transition-all duration-500 animate-fade-in-up"
-                  style={{ animationDelay: `${index * 120}ms`, animationFillMode: "both" }}
+                  className="break-inside-avoid group cursor-pointer rounded-lg overflow-hidden border border-gold/10 hover:border-gold/50 transition-all duration-500 bg-navy-light animate-fade-in-up"
+                  style={{ animationDelay: `${index * 100}ms`, animationFillMode: "both" }}
                 >
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={photo.src}
-                      alt={photo.alt}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      loading="lazy"
-                    />
-                  </div>
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
-                    <span className="text-gold font-heading text-lg uppercase tracking-wider">
+                  {/* Show full image — no aspect ratio constraint */}
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="w-full h-auto block group-hover:scale-[1.03] transition-transform duration-700"
+                    loading="lazy"
+                  />
+                  {/* Caption bar */}
+                  <div className="px-4 py-3 bg-navy-dark/80 border-t border-gold/10">
+                    <span className="text-gold font-heading text-sm uppercase tracking-widest">
                       {photo.caption}
                     </span>
                   </div>
-                  {/* Gold border accent on hover */}
-                  <div className="absolute inset-0 border-2 border-gold/0 group-hover:border-gold/60 rounded-xl transition-all duration-500" />
                 </div>
               ))}
             </div>
@@ -74,22 +78,40 @@ const PhotoGallery = () => {
       {/* Lightbox */}
       {selectedIndex !== null && (
         <div
-          className="fixed inset-0 z-[100] bg-navy/95 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in-up"
+          className="fixed inset-0 z-[100] bg-navy/95 backdrop-blur-md flex items-center justify-center p-4"
           onClick={() => setSelectedIndex(null)}
         >
           <button
             onClick={() => setSelectedIndex(null)}
-            className="absolute top-6 right-6 text-gold hover:text-gold-light transition-colors z-10"
+            className="absolute top-5 right-5 text-gold hover:text-gold-light transition-colors z-10"
           >
             <X className="w-8 h-8" />
           </button>
+
+          {/* Prev */}
+          <button
+            onClick={(e) => { e.stopPropagation(); goPrev(); }}
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-gold/70 hover:text-gold transition-colors"
+          >
+            <ChevronLeft className="w-10 h-10" />
+          </button>
+
           <img
             src={photos[selectedIndex].src}
             alt={photos[selectedIndex].alt}
-            className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
+            className="max-w-full max-h-[85vh] object-contain rounded-lg"
             onClick={(e) => e.stopPropagation()}
           />
-          <p className="absolute bottom-8 text-gold font-heading text-xl uppercase tracking-wider">
+
+          {/* Next */}
+          <button
+            onClick={(e) => { e.stopPropagation(); goNext(); }}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-gold/70 hover:text-gold transition-colors"
+          >
+            <ChevronRight className="w-10 h-10" />
+          </button>
+
+          <p className="absolute bottom-6 text-gold font-heading text-lg uppercase tracking-wider">
             {photos[selectedIndex].caption}
           </p>
         </div>
