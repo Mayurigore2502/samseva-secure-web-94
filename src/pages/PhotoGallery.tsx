@@ -1,10 +1,24 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Camera } from "lucide-react";
+import { Camera, X } from "lucide-react";
+
+import gallery1 from "@/assets/gallery/gallery-1.png";
+import gallery2 from "@/assets/gallery/gallery-2.png";
+import gallery3 from "@/assets/gallery/gallery-3.png";
+import gallery4 from "@/assets/gallery/gallery-4.png";
+import gallery5 from "@/assets/gallery/gallery-5.png";
+
+const photos = [
+  { src: gallery1, alt: "Security personnel at Yashwantrao Chavan College of Science, Kannad", caption: "College Security" },
+  { src: gallery2, alt: "Security guard on duty at Krishna-Koyna bank", caption: "Bank Security" },
+  { src: gallery3, alt: "Security personnel at Exotica by Deepak Builder", caption: "Residential Security" },
+  { src: gallery4, alt: "Security guard at Venutai Chavan College, Karad", caption: "Campus Security" },
+  { src: gallery5, alt: "Security at Vanitanjani Global Energy Pvt Ltd", caption: "Industrial Security" },
+];
 
 const PhotoGallery = () => {
-  // Placeholder - photos will be added here
-  const photos: { src: string; alt: string }[] = [];
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   return (
     <div className="min-h-screen">
@@ -26,34 +40,61 @@ const PhotoGallery = () => {
         {/* Gallery Grid */}
         <section className="bg-background py-16">
           <div className="container mx-auto px-4">
-            {photos.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {photos.map((photo, index) => (
-                  <div
-                    key={index}
-                    className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 aspect-square"
-                  >
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {photos.map((photo, index) => (
+                <div
+                  key={index}
+                  onClick={() => setSelectedIndex(index)}
+                  className="group relative overflow-hidden rounded-xl shadow-md hover:shadow-2xl cursor-pointer transition-all duration-500 animate-fade-in-up"
+                  style={{ animationDelay: `${index * 120}ms`, animationFillMode: "both" }}
+                >
+                  <div className="aspect-[4/3] overflow-hidden">
                     <img
                       src={photo.src}
                       alt={photo.alt}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/40 transition-colors duration-300" />
                   </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-20">
-                <Camera className="w-16 h-16 text-muted-foreground mx-auto mb-4 opacity-40" />
-                <p className="text-muted-foreground text-lg">
-                  Photos coming soon...
-                </p>
-              </div>
-            )}
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
+                    <span className="text-gold font-heading text-lg uppercase tracking-wider">
+                      {photo.caption}
+                    </span>
+                  </div>
+                  {/* Gold border accent on hover */}
+                  <div className="absolute inset-0 border-2 border-gold/0 group-hover:border-gold/60 rounded-xl transition-all duration-500" />
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       </main>
+
+      {/* Lightbox */}
+      {selectedIndex !== null && (
+        <div
+          className="fixed inset-0 z-[100] bg-navy/95 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in-up"
+          onClick={() => setSelectedIndex(null)}
+        >
+          <button
+            onClick={() => setSelectedIndex(null)}
+            className="absolute top-6 right-6 text-gold hover:text-gold-light transition-colors z-10"
+          >
+            <X className="w-8 h-8" />
+          </button>
+          <img
+            src={photos[selectedIndex].src}
+            alt={photos[selectedIndex].alt}
+            className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+          <p className="absolute bottom-8 text-gold font-heading text-xl uppercase tracking-wider">
+            {photos[selectedIndex].caption}
+          </p>
+        </div>
+      )}
+
       <Footer />
     </div>
   );
