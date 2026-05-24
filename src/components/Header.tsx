@@ -37,9 +37,9 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#home" className="flex items-center">
-            <TransparentLogo 
-              src={logoIconSrc} 
-              alt="Samseva Security Force Logo" 
+            <img
+              src={faviconSrc}
+              alt="Samseva Security Force Logo"
               className="h-14 w-auto object-contain"
             />
           </a>
