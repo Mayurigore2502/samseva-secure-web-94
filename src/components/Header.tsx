@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
-import TransparentLogo from "@/components/TransparentLogo";
-import logoIconSrc from "@/assets/logo-icon.jpg";
-
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -38,9 +35,9 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#home" className="flex items-center">
-            <TransparentLogo 
-              src={logoIconSrc} 
-              alt="Samseva Security Force Logo" 
+            <img
+              src="/favicon.png"
+              alt="Samseva Security Force Logo"
               className="h-14 w-auto object-contain"
             />
           </a>
