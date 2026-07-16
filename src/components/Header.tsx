@@ -36,7 +36,7 @@ const Header = () => {
           {/* Logo */}
           <a href="#home" className="flex items-center">
             <img
-              src="/favicon.png"
+              src="/favicon.png?v=5"
               alt="Samseva Security Force Logo"
               className="h-14 w-auto object-contain"
             />
