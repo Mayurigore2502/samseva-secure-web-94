@@ -106,11 +106,14 @@ const ContactSection = () => {
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid sm:grid-cols-2 gap-5">
                 <div className="relative">
-                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                  <label htmlFor="contact-name" className="sr-only">Your Name</label>
+                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" aria-hidden="true" />
                   <Input
+                    id="contact-name"
                     type="text"
                     name="name"
                     placeholder="Your Name *"
+                    aria-label="Your Name"
                     value={formData.name}
                     onChange={handleChange}
                     required
@@ -118,11 +121,14 @@ const ContactSection = () => {
                   />
                 </div>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                  <label htmlFor="contact-email" className="sr-only">Your Email</label>
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" aria-hidden="true" />
                   <Input
+                    id="contact-email"
                     type="email"
                     name="email"
                     placeholder="Your Email *"
+                    aria-label="Your Email"
                     value={formData.email}
                     onChange={handleChange}
                     required
@@ -133,11 +139,14 @@ const ContactSection = () => {
 
               <div className="grid sm:grid-cols-2 gap-5">
                 <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                  <label htmlFor="contact-phone" className="sr-only">Phone Number</label>
+                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" aria-hidden="true" />
                   <Input
+                    id="contact-phone"
                     type="tel"
                     name="phone"
                     placeholder="Phone Number *"
+                    aria-label="Phone Number"
                     value={formData.phone}
                     onChange={handleChange}
                     required
@@ -145,11 +154,14 @@ const ContactSection = () => {
                   />
                 </div>
                 <div className="relative">
-                  <Building className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                  <label htmlFor="contact-company" className="sr-only">Company Name</label>
+                  <Building className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" aria-hidden="true" />
                   <Input
+                    id="contact-company"
                     type="text"
                     name="company"
                     placeholder="Company Name"
+                    aria-label="Company Name"
                     value={formData.company}
                     onChange={handleChange}
                     className="pl-10 bg-muted border-border focus:border-gold"
@@ -158,10 +170,13 @@ const ContactSection = () => {
               </div>
 
               <div className="relative">
-                <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" />
+                <label htmlFor="contact-message" className="sr-only">Your Message</label>
+                <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" aria-hidden="true" />
                 <Textarea
+                  id="contact-message"
                   name="message"
                   placeholder="Your Message *"
+                  aria-label="Your Message"
                   value={formData.message}
                   onChange={handleChange}
                   required
@@ -169,6 +184,7 @@ const ContactSection = () => {
                   className="pl-10 bg-muted border-border focus:border-gold resize-none"
                 />
               </div>
+
 
               <Button
                 type="submit"

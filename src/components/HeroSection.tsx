@@ -25,12 +25,12 @@ const HeroSection = () => {
           </div>
 
           {/* Main Heading */}
-          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold text-card mb-4 animate-fade-in-up delay-100">
+          <p className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold text-card mb-4 animate-fade-in-up delay-100" aria-hidden="true">
             WE <span className="text-gradient-gold">SECURE</span>
+          </p>
+          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-card mb-6 animate-fade-in-up delay-200">
+            WHAT MATTERS MOST — Security Services in Maharashtra
           </h1>
-          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-card mb-6 animate-fade-in-up delay-200">
-            WHAT MATTERS MOST
-          </h2>
 
           {/* Subheading */}
           <p className="text-xl md:text-2xl text-steel-light mb-8 max-w-2xl animate-fade-in-up delay-300">

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Camera, X, ChevronLeft, ChevronRight } from "lucide-react";
@@ -29,6 +30,14 @@ const PhotoGallery = () => {
 
   return (
     <div className="min-h-screen bg-navy">
+      <Helmet>
+        <title>Photo Gallery — Samseva Security Force</title>
+        <meta name="description" content="Photos of Samseva Security Force guards on duty at colleges, banks, industries and residential sites across Maharashtra." />
+        <link rel="canonical" href="https://samsevasecurity.com/photo-gallery" />
+        <meta property="og:title" content="Photo Gallery — Samseva Security Force" />
+        <meta property="og:description" content="Photos of Samseva Security Force guards on duty at colleges, banks, industries and residential sites across Maharashtra." />
+        <meta property="og:url" content="https://samsevasecurity.com/photo-gallery" />
+      </Helmet>
       <Header />
       <main className="pt-24">
         {/* Hero Banner */}
