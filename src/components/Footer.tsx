@@ -4,10 +4,10 @@ import logoTextSrc from "@/assets/logo-text.jpg";
 const socialLinks = [
   { name: "Twitter", icon: Twitter, href: "#" },
   { name: "LinkedIn", icon: Linkedin, href: "#" },
-  { name: "Instagram", icon: Instagram, href: "#" },
+  { name: "Instagram", icon: Instagram, href: "https://www.instagram.com/samsevasecurity" },
   { name: "Facebook", icon: Facebook, href: "#" },
   { name: "Telegram", icon: Send, href: "#" },
-  { name: "YouTube", icon: Youtube, href: "#" },
+  { name: "YouTube", icon: Youtube, href: "https://youtube.com/@samsevasecurity" },
 ];
 
 const Footer = () => {
@@ -35,6 +35,8 @@ const Footer = () => {
                   <a
                     key={social.name}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={social.name}
                     className="w-10 h-10 rounded-full border border-gold/40 flex items-center justify-center text-gold hover:bg-gold hover:text-navy-dark hover:shadow-gold transition-all duration-300"
                   >
