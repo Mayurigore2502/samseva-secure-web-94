@@ -1,6 +1,64 @@
+import { useEffect, useRef, useState } from "react";
 import { Shield, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-security.jpg";
+
+const useCountUp = (target: number, duration = 2000, startDelay = 600) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !started.current) {
+          started.current = true;
+          const timeout = setTimeout(() => {
+            const start = performance.now();
+            const tick = (now: number) => {
+              const progress = Math.min((now - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              setCount(Math.round(eased * target));
+              if (progress < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          }, startDelay);
+          observer.disconnect();
+          return () => clearTimeout(timeout);
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [target, duration, startDelay]);
+
+  return { count, ref };
+};
+
+const StatItem = ({ value, suffix, label }: { value: number; suffix: string; label: string }) => {
+  const { count, ref } = useCountUp(value);
+  return (
+    <div className="text-center" ref={ref}>
+      <p className="font-heading text-4xl md:text-5xl font-bold text-gold">
+        {count}
+        {suffix}
+      </p>
+      <p className="text-steel-light text-sm uppercase tracking-wider mt-1">{label}</p>
+    </div>
+  );
+};
+
+const stats = [
+  { value: 24, suffix: "/7", label: "Service" },
+  { value: 365, suffix: "", label: "Days" },
+  { value: 100, suffix: "+", label: "Clients" },
+  { value: 300, suffix: "+", label: "Guards" },
+];
 
 const HeroSection = () => {
   return (
@@ -58,22 +116,9 @@ const HeroSection = () => {
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 animate-fade-in-up delay-500">
-            <div className="text-center">
-              <p className="font-heading text-4xl md:text-5xl font-bold text-gold">24/7</p>
-              <p className="text-steel-light text-sm uppercase tracking-wider mt-1">Service</p>
-            </div>
-            <div className="text-center">
-              <p className="font-heading text-4xl md:text-5xl font-bold text-gold">365</p>
-              <p className="text-steel-light text-sm uppercase tracking-wider mt-1">Days</p>
-            </div>
-            <div className="text-center">
-              <p className="font-heading text-4xl md:text-5xl font-bold text-gold">100+</p>
-              <p className="text-steel-light text-sm uppercase tracking-wider mt-1">Clients</p>
-            </div>
-            <div className="text-center">
-              <p className="font-heading text-4xl md:text-5xl font-bold text-gold">300+</p>
-              <p className="text-steel-light text-sm uppercase tracking-wider mt-1">Guards</p>
-            </div>
+            {stats.map((stat) => (
+              <StatItem key={stat.label} value={stat.value} suffix={stat.suffix} label={stat.label} />
+            ))}
           </div>
         </div>
       </div>
