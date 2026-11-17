@@ -1,5 +1,37 @@
+import sbiLogo from "@/assets/clients/SBI_Logo.png";
+import diagnopeinLogo from "@/assets/clients/Diagnopein_Diagnostic_Centre_logo.png";
+import dietechLogo from "@/assets/clients/Dietech_Engineering_logo.jpg";
+import kalburgiLogo from "@/assets/clients/Kalburgi_Udyog_logo.jpg";
+import krishnaKoynaLogo from "@/assets/clients/krishna-koyna_logo.jpg";
+import ycCollegeLogo from "@/assets/clients/YC_college.jpg";
+import vcCollegeLogo from "@/assets/clients/vc_college.jpg";
+import vanitanjaniLogo from "@/assets/clients/Vanitanjani_Global_Energy.jpg";
+import tataMotorsLogo from "@/assets/clients/Tata_Motors.png";
+
+type LogoClient = {
+  name: string;
+  logo: string;
+};
+
 const ClientsSection = () => {
-  const clients = [
+  const logoClients: LogoClient[] = [
+    { name: "State Bank of India", logo: sbiLogo },
+    { name: "Tata Motors", logo: tataMotorsLogo },
+    { name: "Diagnopein Diagnostic Centre", logo: diagnopeinLogo },
+    { name: "Dietech Engineering", logo: dietechLogo },
+    { name: "Kalburgi Udyog", logo: kalburgiLogo },
+    { name: "Krishna Koyana Patsanstha", logo: krishnaKoynaLogo },
+    { name: "Yashwantrao Chavan College of Science", logo: ycCollegeLogo },
+    { name: "Venutai Chavhan College of Arts and Commerce", logo: vcCollegeLogo },
+    { name: "Vanitanjani Global Energy Pvt Ltd", logo: vanitanjaniLogo },
+  ];
+
+  const textClients = [
+    "Khodashi Power Plant",
+    "Parshwnath Patsanstha",
+    "Siddharth Patil Group",
+    "Tatthastu Kidney Hospital",
+    "Swami Hospital",
     "Titan",
     "Synfra",
     "Synergy SKI Infradevelopment",
@@ -9,14 +41,13 @@ const ClientsSection = () => {
     "Donin's Royal",
     "Royal Enfield",
     "Brillent Academy College of Science",
-    "Krishna Koyana Patsanstha",
     "Silver Palm & Silver Garden",
     "Exotica 1 Apartment",
     "Amit Executive Hotel",
     "Alpha Showroom",
     "Vrundavan City",
     "Titen Showroom",
-    "Anuraj Arcade"
+    "Anuraj Arcade",
   ];
 
   return (
@@ -33,14 +64,36 @@ const ClientsSection = () => {
           </p>
         </div>
 
-        {/* Clients Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          {clients.map((client, index) => (
-            <div 
-              key={index}
-              className="bg-card p-6 rounded-lg border border-border hover:border-gold hover:shadow-gold transition-all text-center"
+        {/* Clients with logos */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
+          {logoClients.map((client, index) => (
+            <div
+              key={client.name}
+              className="bg-card rounded-lg border border-border p-5 h-28 flex flex-col items-center justify-center gap-2 hover:border-gold hover:shadow-gold transition-all"
             >
-              <p className="font-medium text-foreground text-sm">{client}</p>
+              <img
+                src={client.logo}
+                alt={`${client.name} logo`}
+                className="max-h-12 max-w-full object-contain"
+                loading="lazy"
+                decoding="async"
+                draggable={false}
+              />
+              <p className="font-medium text-foreground text-xs text-center leading-tight">
+                {client.name}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Clients without logos */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4">
+          {textClients.map((client, index) => (
+            <div
+              key={index}
+              className="bg-card p-4 rounded-lg border border-border hover:border-gold hover:shadow-gold transition-all text-center flex items-center justify-center min-h-[4.5rem]"
+            >
+              <p className="font-medium text-foreground text-xs leading-tight">{client}</p>
             </div>
           ))}
         </div>
