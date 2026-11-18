@@ -4,7 +4,7 @@ import {
   Landmark, 
   Users, 
   Calendar, 
-  Flame, 
+  Briefcase,
   Sparkles,
   Factory,
   ShieldCheck
@@ -43,9 +43,9 @@ const ServicesSection = () => {
       description: "Protection and aid for attendees at events like conferences and concerts. Personnel patrol venue grounds and buildings with a perceiving eye."
     },
     {
-      icon: Flame,
-      title: "Fire Safety Squad",
-      description: "Systematic, critical appraisal of fire hazards involving personnel, premises, services & operation methods. Ensuring occupational safety & health systems satisfy legal requirements."
+      icon: Briefcase,
+      title: "Skilled Manpower Services",
+      description: "Reliable skilled workforce solutions to power your operations, reduce hiring hassle, and drive business growth."
     },
     {
       icon: Sparkles,
