@@ -5,7 +5,7 @@ const socialLinks = [
   { name: "Twitter", icon: Twitter, href: "https://x.com/Samseva_SF" },
   { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/vishal-shewale-31b806170/" },
   { name: "Instagram", icon: Instagram, href: "https://www.instagram.com/samsevasecurity" },
-  { name: "Facebook", icon: Facebook, href: "#" },
+  { name: "Facebook", icon: Facebook, href: "https://www.facebook.com/share/1C7sYjoVnT/" },
   { name: "Telegram", icon: Send, href: "https://t.me/samsevasecurity" },
   { name: "YouTube", icon: Youtube, href: "https://youtube.com/@samsevasecurity" },
 ];
